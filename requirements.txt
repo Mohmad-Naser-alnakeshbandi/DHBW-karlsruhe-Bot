@@ -1,0 +1,5 @@
+discord
+requests
+datetime
+beautifulsoup4==4.9.3
+python-dotenv==0.10.1
