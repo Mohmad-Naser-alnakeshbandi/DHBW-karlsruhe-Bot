@@ -9,6 +9,7 @@ load_dotenv()
 client = discord.Client()
 
 
+
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
@@ -23,7 +24,16 @@ async def on_message(message):
                                    "`" + "Mensa Moltke-Heute" +"`"+ "\n" +
                                    "`" + "Mensa Moltke-Morgen" +"`"+ "\n" +
                                    "`" + "Mensa Adenauerring-Heute" +"`"+ "\n" +
-                                   "`" + "Mensa Adenauerring-Morgen" +"`"+ "\n" )
+                                   "`" + "Mensa Adenauerring-Morgen" +"`"+ "\n" +
+                                   "`" + "Emojis Bedeutungen" +"`"+ "\n"+
+                                   "` =>" + "🤷 : Es gibt keine Information über des Essen" + "`" + "\n"+
+                                   "` =>" + "🐷 : Schwein" + "`" + "\n" +
+                                   "` =>"  "🥗 : vegetarisch" + "`" + "\n"+
+                                   "` =>"  "🌱 : vegan" + "`" + "\n"+
+                                   "` =>"  "🐮 : Rind" + "`" + "\n"+
+                                   "` =>" "🐟: Fisch" + "`" + "\n"+
+                                   "` =>"  "🐑 : Lamm" + "`" + "\n"+
+                                   "` =>" "🐔' : Hähnchen" + "`" + "\n")
 
 
 
@@ -47,10 +57,25 @@ async def on_message(message):
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
                 food = soup_today.find_all('p', {"class": "aw-meal-description"})
                 prices = soup_today.find_all('div', {"class": "col-sm-2 no-padding-xs aw-meal-price"})
-                for f, p in zip(food, prices):
-                     food_data =f.text+" für "+p.text
-                     await message.channel.send("`" + food_data + "`")
-                await message.channel.send("(☞ﾟヮﾟ)☞, das was!")
+                description = soup_today.find_all('p', {"class": "aw-meal-attributes"})
+                for f, d, p in zip(food, description, prices):
+                    if (d.text.split()[0] == "ZULETZT" or d.text.split()[0] == "ALLERGEN"):
+                        await message.channel.send( f.text + " '" + '🤷 - steht nicht' + "' für " + p.text)
+                    if (d.text.split()[0] == "Schwein"):
+                        await message.channel.send(f.text + " '" + '🐷' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegetarisch"):
+                        await message.channel.send( f.text + " '" + '🥗' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegan"):
+                        await message.channel.send(f.text + " '" + '🌱 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Rind"):
+                        await message.channel.send(f.text + " '" + "🐮" + "' für " + p.text)
+                    if (d.text.split()[0] == "Fisch"):
+                        await message.channel.send(f.text + " '" + '🐟 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Lamm"):
+                        await message.channel.send(f.text + " '" + '🐑' + "' für " + p.text)
+                    if (d.text.split()[0] == "Hähnchen"):
+                        await message.channel.send(f.text + " '" + '🐔' + "' für " + p.text)
+                await message.channel.send("(☞ﾟヮﾟ)☞, das war's!")
 
 
 
@@ -76,10 +101,25 @@ async def on_message(message):
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
                 food = soup_today.find_all('p', {"class": "aw-meal-description"})
                 prices = soup_today.find_all('div', {"class": "col-sm-2 no-padding-xs aw-meal-price"})
-                for f, p in zip(food, prices):
-                    food_data = f.text + " für " + p.text
-                    await message.channel.send("`" +food_data+ "`")
-                await message.channel.send("(☞ﾟヮﾟ)☞, das was!")
+                description = soup_today.find_all('p', {"class": "aw-meal-attributes"})
+                for f, d, p in zip(food, description, prices):
+                    if (d.text.split()[0] == "ZULETZT" or d.text.split()[0] == "ALLERGEN"):
+                        await message.channel.send( f.text + " '" + '🤷 - steht nicht' + "' für " + p.text)
+                    if (d.text.split()[0] == "Schwein"):
+                        await message.channel.send(f.text + " '" + '🐷' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegetarisch"):
+                        await message.channel.send( f.text + " '" + '🥗' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegan"):
+                        await message.channel.send(f.text + " '" + '🌱 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Rind"):
+                        await message.channel.send(f.text + " '" + "🐮" + "' für " + p.text)
+                    if (d.text.split()[0] == "Fisch"):
+                        await message.channel.send(f.text + " '" + '🐟 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Lamm"):
+                        await message.channel.send(f.text + " '" + '🐑' + "' für " + p.text)
+                    if (d.text.split()[0] == "Hähnchen"):
+                        await message.channel.send(f.text + " '" + '🐔' + "' für " + p.text)
+                await message.channel.send("(☞ﾟヮﾟ)☞, das war's!")
 
 
 
@@ -105,10 +145,25 @@ async def on_message(message):
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
                 food = soup_today.find_all('p', {"class": "aw-meal-description"})
                 prices = soup_today.find_all('div', {"class": "col-sm-2 no-padding-xs aw-meal-price"})
-                for f, p in zip(food, prices):
-                     food_data =f.text+" für "+p.text
-                     await message.channel.send("`" + food_data + "`")
-                await message.channel.send("(☞ﾟヮﾟ)☞, das was!")
+                description = soup_today.find_all('p', {"class": "aw-meal-attributes"})
+                for f, d, p in zip(food, description, prices):
+                    if (d.text.split()[0] == "ZULETZT" or d.text.split()[0] == "ALLERGEN"):
+                        await message.channel.send( f.text + " '" + '🤷 - steht nicht' + "' für " + p.text)
+                    if (d.text.split()[0] == "Schwein"):
+                        await message.channel.send(f.text + " '" + '🐷' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegetarisch"):
+                        await message.channel.send( f.text + " '" + '🥗' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegan"):
+                        await message.channel.send(f.text + " '" + '🌱 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Rind"):
+                        await message.channel.send(f.text + " '" + "🐮" + "' für " + p.text)
+                    if (d.text.split()[0] == "Fisch"):
+                        await message.channel.send(f.text + " '" + '🐟 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Lamm"):
+                        await message.channel.send(f.text + " '" + '🐑' + "' für " + p.text)
+                    if (d.text.split()[0] == "Hähnchen"):
+                        await message.channel.send(f.text + " '" + '🐔' + "' für " + p.text)
+                await message.channel.send("(☞ﾟヮﾟ)☞, das war's!")
 
 
 
@@ -132,11 +187,25 @@ async def on_message(message):
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
                 food = soup_today.find_all('p', {"class": "aw-meal-description"})
                 prices = soup_today.find_all('div', {"class": "col-sm-2 no-padding-xs aw-meal-price"})
-                for f, p in zip(food, prices):
-                    food_data = f.text + " für " + p.text
-                    await message.channel.send("`" +food_data+ "`")
-                await message.channel.send("(☞ﾟヮﾟ)☞, das was!")
-
+                description = soup_today.find_all('p', {"class": "aw-meal-attributes"})
+                for f, d, p in zip(food, description, prices):
+                    if (d.text.split()[0] == "ZULETZT" or d.text.split()[0] == "ALLERGEN"):
+                        await message.channel.send( f.text + " '" + '🤷 - steht nicht' + "' für " + p.text)
+                    if (d.text.split()[0] == "Schwein"):
+                        await message.channel.send(f.text + " '" + '🐷' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegetarisch"):
+                        await message.channel.send( f.text + " '" + '🥗' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegan"):
+                        await message.channel.send(f.text + " '" + '🌱 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Rind"):
+                        await message.channel.send(f.text + " '" + "🐮" + "' für " + p.text)
+                    if (d.text.split()[0] == "Fisch"):
+                        await message.channel.send(f.text + " '" + '🐟 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Lamm"):
+                        await message.channel.send(f.text + " '" + '🐑' + "' für " + p.text)
+                    if (d.text.split()[0] == "Hähnchen"):
+                        await message.channel.send(f.text + " '" + '🐔' + "' für " + p.text)
+                await message.channel.send("(☞ﾟヮﾟ)☞, das war's!")
 
 
 
@@ -159,10 +228,26 @@ async def on_message(message):
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
                 food = soup_today.find_all('p', {"class": "aw-meal-description"})
                 prices = soup_today.find_all('div', {"class": "col-sm-2 no-padding-xs aw-meal-price"})
-                for f, p in zip(food, prices):
-                     food_data =f.text+" für "+p.text
-                     await message.channel.send("`" + food_data + "`")
-                await message.channel.send("(☞ﾟヮﾟ)☞, das was!")
+                description = soup_today.find_all('p', {"class": "aw-meal-attributes"})
+
+                for f, d, p in zip(food, description, prices):
+                    if (d.text.split()[0] == "ZULETZT" or d.text.split()[0] == "ALLERGEN"):
+                        await message.channel.send( f.text + " '" + '🤷 - steht nicht' + "' für " + p.text)
+                    if (d.text.split()[0] == "Schwein"):
+                        await message.channel.send(f.text + " '" + '🐷' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegetarisch"):
+                        await message.channel.send( f.text + " '" + '🥗' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegan"):
+                        await message.channel.send(f.text + " '" + '🌱 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Rind"):
+                        await message.channel.send(f.text + " '" + "🐮" + "' für " + p.text)
+                    if (d.text.split()[0] == "Fisch"):
+                        await message.channel.send(f.text + " '" + '🐟 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Lamm"):
+                        await message.channel.send(f.text + " '" + '🐑' + "' für " + p.text)
+                    if (d.text.split()[0] == "Hähnchen"):
+                        await message.channel.send(f.text + " '" + '🐔' + "' für " + p.text)
+                await message.channel.send("(☞ﾟヮﾟ)☞, das war's!")
 
 
 
@@ -186,10 +271,25 @@ async def on_message(message):
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
                 food = soup_today.find_all('p', {"class": "aw-meal-description"})
                 prices = soup_today.find_all('div', {"class": "col-sm-2 no-padding-xs aw-meal-price"})
-                for f, p in zip(food, prices):
-                    food_data = f.text + " für " + p.text
-                    await message.channel.send("`" +food_data+ "`")
-                await message.channel.send("(☞ﾟヮﾟ)☞, das was!")
+                description = soup_today.find_all('p', {"class": "aw-meal-attributes"})
+                for f, d, p in zip(food, description, prices):
+                    if (d.text.split()[0] == "ZULETZT" or d.text.split()[0] == "ALLERGEN"):
+                        await message.channel.send( f.text + " '" + '🤷 - steht nicht' + "' für " + p.text)
+                    if (d.text.split()[0] == "Schwein"):
+                        await message.channel.send(f.text + " '" + '🐷' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegetarisch"):
+                        await message.channel.send( f.text + " '" + '🥗' + "' für " + p.text)
+                    if (d.text.split()[0] == "vegan"):
+                        await message.channel.send(f.text + " '" + '🌱 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Rind"):
+                        await message.channel.send(f.text + " '" + "🐮" + "' für " + p.text)
+                    if (d.text.split()[0] == "Fisch"):
+                        await message.channel.send(f.text + " '" + '🐟 ' + "' für " + p.text)
+                    if (d.text.split()[0] == "Lamm"):
+                        await message.channel.send(f.text + " '" + '🐑' + "' für " + p.text)
+                    if (d.text.split()[0] == "Hähnchen"):
+                        await message.channel.send(f.text + " '" + '🐔' + "' für " + p.text)
+                await message.channel.send("(☞ﾟヮﾟ)☞, das war's!")
 
 
 client.run(os.getenv("TOKEN"))
