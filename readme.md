@@ -16,11 +16,11 @@
 
     the test day is : Friday
 
-<img src = "./images/Test-1.PNG" alt = "self-Intoduction">
+<img src = "./images/Test-1.PNG" alt = "test-2">
 
 <br>
 
-<img src = "./images/Test-2.PNG" alt = "self-Intoduction">
+<img src = "./images/Test-2.PNG" alt = "test-2">
 
 
 ### Visit my Website: 
