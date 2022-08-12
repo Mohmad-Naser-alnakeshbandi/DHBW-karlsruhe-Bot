@@ -53,6 +53,12 @@ async def on_message(message):
                     url = url + "donnerstag.html"
                 elif (now == 'Friday'):
                     url = url + "freitag.html"
+                elif (now == 'Saturday'):
+                    await message.channel.send("keine Ahnung,  heute ist Samstag 🤞 ")
+                    return
+                elif (now == 'Sunday'):
+                    await message.channel.send("keine Ahnung,  heute ist Sonntag 🤞 ")
+                    return
                 html_today = requests.get(url)
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
                 food = soup_today.find_all('p', {"class": "aw-meal-description"})
@@ -96,6 +102,12 @@ async def on_message(message):
                     url = url + "freitag.html"
                 elif (now == 'Friday'):
                     await message.channel.send("keine Ahnung,  heute ist freitag 🤞 ")
+                    return
+                elif (now == 'Saturday'):
+                    await message.channel.send("keine Ahnung,  morgen ist Sonntag 🤞 ")
+                    return
+                elif (now == 'Sunday'):
+                    await message.channel.send("keine Ahnung,  Steht noch nicht🤞 ")
                     return
                 html_today = requests.get(url)
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
@@ -141,6 +153,12 @@ async def on_message(message):
                     url = url + "donnerstag.html"
                 elif (now == 'Friday'):
                     url = url + "freitag.html"
+                elif (now == 'Saturday'):
+                    await message.channel.send("keine Ahnung,  heute ist Samstag 🤞 ")
+                    return
+                elif (now == 'Sunday'):
+                    await message.channel.send("keine Ahnung,  heute ist Sonntag 🤞 ")
+                    return
                 html_today = requests.get(url)
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
                 food = soup_today.find_all('p', {"class": "aw-meal-description"})
@@ -183,6 +201,12 @@ async def on_message(message):
                 elif (now == 'Friday'):
                     await message.channel.send("keine Ahnung,  heute ist freitag 🤞 ")
                     return
+                elif (now == 'Saturday'):
+                    await message.channel.send("keine Ahnung,  morgen ist Sonntag 🤞 ")
+                    return
+                elif (now == 'Sunday'):
+                    await message.channel.send("keine Ahnung,  Steht noch nicht🤞 ")
+                    return
                 html_today = requests.get(url)
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
                 food = soup_today.find_all('p', {"class": "aw-meal-description"})
@@ -224,6 +248,12 @@ async def on_message(message):
                     url = url + "donnerstag.html"
                 elif (now == 'Friday'):
                     url = url + "freitag.html"
+                elif (now == 'Saturday'):
+                    await message.channel.send("keine Ahnung,  heute ist Samstag 🤞 ")
+                    return
+                elif (now == 'Sunday'):
+                    await message.channel.send("keine Ahnung,  heute ist Sonntag 🤞 ")
+                    return
                 html_today = requests.get(url)
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
                 food = soup_today.find_all('p', {"class": "aw-meal-description"})
@@ -266,6 +296,12 @@ async def on_message(message):
                     url = url + "freitag.html"
                 elif (now == 'Friday'):
                     await message.channel.send("keine Ahnung,  heute ist freitag 🤞 ")
+                    return
+                elif (now == 'Saturday'):
+                    await message.channel.send("keine Ahnung,  morgen ist Sonntag 🤞 ")
+                    return
+                elif (now == 'Sunday'):
+                    await message.channel.send("keine Ahnung,  Steht noch nicht🤞 ")
                     return
                 html_today = requests.get(url)
                 soup_today = BeautifulSoup(html_today.text, "html.parser")
