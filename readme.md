@@ -23,6 +23,4 @@
 <img src = "./images/Test-2.PNG" alt = "test-2">
 
 
-### Visit my Website: 
 
-<a href="https://mohmad-naser-alnakeshbandi.github.io/Alnakeshbnandi/" target="_blank" rel="noreferrer">Mohamad Naser Alankeshbandi </a>
