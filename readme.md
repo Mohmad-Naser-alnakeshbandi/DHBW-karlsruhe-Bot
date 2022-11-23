@@ -1,6 +1,6 @@
 ## dhbw karlslsruhe Bot
 
-### I made this Bot for only purpose and this purpose is making the live of the students of DHBW Karlsruhe easier. 
+### I made this Bot for only one purpose and this purpose is making the live of the students of DHBW Karlsruhe easier. 
 
 <br>
 
